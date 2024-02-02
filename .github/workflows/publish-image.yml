@@ -2,6 +2,8 @@ name: Create and publish Docker runner image
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
   schedule:
     - cron: "0 9 * * *"
 
