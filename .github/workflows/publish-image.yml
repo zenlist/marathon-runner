@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-and-push-image:
-    runs-on: ubuntu-22.04-16core
+    runs-on: runner-set-dind
 
     permissions:
       packages: write
@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - run: git version
 
       - name: Log in to the Container registry
         uses: docker/login-action@v3
