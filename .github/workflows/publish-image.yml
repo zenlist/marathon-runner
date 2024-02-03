@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-and-push-image:
-    runs-on: runners-set-dind
+    runs-on: runner-set-dind
 
     permissions:
       packages: write
