@@ -7,7 +7,7 @@ ARG CARGO_LAMBDA_VERSION=1.0.3
 
 # Install base packages
 RUN sudo apt update -y \
-    && sudo apt install -y curl wget tar xz-utils unzip build-essential docker-buildx
+    && sudo apt install -y curl wget tar xz-utils unzip build-essential docker-buildx git
 
 # Install GH CLI
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
