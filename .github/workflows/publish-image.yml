@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-and-push-image:
-    runs-on: ubuntu-22.04-16core
+    runs-on: runners-set-dind
 
     permissions:
       packages: write
