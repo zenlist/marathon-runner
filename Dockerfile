@@ -19,6 +19,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --defau
 ENV PATH="/home/runner/.cargo/bin:${PATH}"
 
 RUN rustup target add aarch64-unknown-linux-musl \
+    && rustup target add aarch64-unknown-linux-gnu \
     && rustup toolchain add nightly
 
 RUN cargo install --locked cargo-lambda@${CARGO_LAMBDA_VERSION}
