@@ -2,7 +2,7 @@ FROM ghcr.io/actions/actions-runner:latest
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG ZIG_VERSION=0.12.0-dev.3123+147beec7d
+ARG ZIG_VERSION=0.12.0-dev.3429+13a9d94a8
 ARG CARGO_LAMBDA_VERSION=1.1.0
 
 # Install base packages
