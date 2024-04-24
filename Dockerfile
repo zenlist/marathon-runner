@@ -2,7 +2,7 @@ FROM ghcr.io/actions/actions-runner:latest
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG ZIG_VERSION=0.12.0-dev.3429+13a9d94a8
+ARG ZIG_VERSION=0.12.0
 ARG CARGO_LAMBDA_VERSION=1.1.0
 
 # Install base packages
@@ -28,7 +28,7 @@ RUN cargo install --locked cargo-lambda@${CARGO_LAMBDA_VERSION}
 RUN export RUNNER_ARCH=${TARGETARCH} \
     && if [ "$RUNNER_ARCH" = "arm64" ]; then export RUNNER_ARCH=aarch64 ; fi \
     && if [ "$RUNNER_ARCH" = "amd64" ]; then export RUNNER_ARCH=x86_64 ; fi \
-    && curl -f -L -o zig.tar.xz https://ziglang.org/builds/zig-${TARGETOS}-${RUNNER_ARCH}-${ZIG_VERSION}.tar.xz \
+    && curl -f -L -o zig.tar.xz https://ziglang.org/download/${ZIG_VERSION}/zig-${TARGETOS}-${RUNNER_ARCH}-${ZIG_VERSION}.tar.xz \
     && tar xf zig.tar.xz \
     && rm zig.tar.xz \
     && mv zig-${TARGETOS}-${RUNNER_ARCH}-${ZIG_VERSION} zig-${ZIG_VERSION}
