@@ -2,8 +2,8 @@ FROM ghcr.io/actions/actions-runner:latest
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG ZIG_VERSION=0.12.0
-ARG CARGO_LAMBDA_VERSION=1.1.0
+ARG ZIG_VERSION=0.13.0
+ARG CARGO_LAMBDA_VERSION=1.3.0
 
 # Install base packages
 RUN sudo apt update -y \
