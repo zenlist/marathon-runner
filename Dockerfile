@@ -23,6 +23,7 @@ RUN rustup target add aarch64-unknown-linux-musl \
     && rustup toolchain add nightly
 
 RUN cargo install --locked cargo-lambda@${CARGO_LAMBDA_VERSION}
+RUN cargo install cargo-nextest --locked
 
 # Install Zig
 RUN export RUNNER_ARCH=${TARGETARCH} \
