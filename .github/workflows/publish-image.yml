@@ -43,6 +43,10 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.ORG }}/${{ env.SERVICE }}
+          tags: |
+            type=raw,value={{branch}}
+            type=raw,value={{branch}}-{{sha}}-{{date 'YYYYMMDD-HHmmss'}}
+            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
 
       - name: Build and push
         id: push
