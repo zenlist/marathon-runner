@@ -7,7 +7,7 @@ ARG CARGO_LAMBDA_VERSION=1.8.1
 
 # Install base packages
 RUN sudo apt update -y \
-    && sudo apt install -y curl wget tar xz-utils unzip build-essential docker-buildx git cmake libssl-dev
+    && sudo apt install -y curl wget tar xz-utils unzip build-essential docker-buildx git cmake libssl-dev protobuf-compiler
 
 # Install GH CLI
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
