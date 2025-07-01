@@ -19,7 +19,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --defau
 ENV PATH="/home/runner/.cargo/bin:${PATH}"
 
 RUN rustup target add aarch64-unknown-linux-musl \
-    && rustup target add aarch64-unknown-linux-gnu
+    && rustup target add aarch64-unknown-linux-gnu \
+    && rustup target add x86_64-unknown-linux-musl \
+    && rustup target add x86_64-unknown-linux-gnu
 
 RUN cargo install --locked cargo-lambda@${CARGO_LAMBDA_VERSION}
 RUN cargo install cargo-nextest --locked
@@ -34,6 +36,8 @@ RUN export RUNNER_ARCH=${TARGETARCH} \
     && mv zig-${TARGETOS}-${RUNNER_ARCH}-${ZIG_VERSION} zig-${ZIG_VERSION}
 
 ENV PATH="/home/runner/zig-${ZIG_VERSION}:${PATH}"
+
+RUN cargo install cargo-zigbuild --locked
 
 # Install Node v20 and AWS CDK
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - \
