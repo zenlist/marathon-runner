@@ -19,6 +19,8 @@ RUN sudo apt update -y \
        cmake \
        libssl-dev \
        protobuf-compiler \
+       tinyproxy \
+       openssh-client \
     && sudo rm -rf /var/lib/apt/lists/*
 
 # Install GH CLI
