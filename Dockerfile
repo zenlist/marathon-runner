@@ -7,12 +7,25 @@ ARG CARGO_LAMBDA_VERSION=1.8.1
 
 # Install base packages
 RUN sudo apt update -y \
-    && sudo apt install -y curl wget tar xz-utils unzip build-essential docker-buildx git cmake libssl-dev protobuf-compiler
+    && sudo apt install -y \
+       curl \
+       wget \
+       tar \
+       xz-utils \
+       unzip \
+       build-essential \
+       docker-buildx \
+       git \
+       cmake \
+       libssl-dev \
+       protobuf-compiler \
+    && sudo rm -rf /var/lib/apt/lists/*
 
 # Install GH CLI
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-    && sudo apt update && sudo apt install -y gh
+    && sudo apt update && sudo apt install -y gh \
+    && sudo rm -rf /var/lib/apt/lists/*
 
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
@@ -42,6 +55,5 @@ RUN cargo install cargo-zigbuild --locked
 # Install Node v20 and AWS CDK
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - \
     && sudo apt-get install -y nodejs \
-    && sudo npm i -g aws-cdk
-
-RUN sudo rm -rf /var/lib/apt/lists/*
+    && sudo npm i -g aws-cdk \
+    && sudo rm -rf /var/lib/apt/lists/*
