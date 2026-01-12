@@ -5,8 +5,6 @@ ARG TARGETARCH
 ARG ZIG_VERSION=0.14.0
 ARG CARGO_LAMBDA_VERSION=1.8.1
 
-USER root
-
 # Install base packages
 RUN sudo apt update -y \
     && sudo apt install -y curl wget tar xz-utils unzip build-essential docker-buildx git cmake libssl-dev protobuf-compiler
