@@ -3,7 +3,7 @@ name: Create and publish Docker runner image
 on:
   workflow_dispatch:
   push:
-    branches: ["main"]
+    branches: ["main", "fix-issue"]
   schedule:
     - cron: "0 9 * * *"
 
@@ -14,7 +14,7 @@ env:
 
 jobs:
   build-and-push-image:
-    runs-on: github-large-docker
+    runs-on: ubuntu-latest
 
     permissions:
       contents: read
@@ -46,7 +46,8 @@ jobs:
           tags: |
             type=raw,value={{branch}}
             type=raw,value={{branch}}-{{sha}}-{{date 'YYYYMMDD-HHmmss'}}
-            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+            type=raw,value=latest
+            type=raw,value=main
 
       - name: Build and push
         id: push
