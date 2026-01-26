@@ -60,6 +60,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - \
     && sudo npm i -g aws-cdk @anthropic-ai/claude-code \
     && sudo rm -rf /var/lib/apt/lists/*
 
+USER root
+
 # Configure Claude Code to use AWS Bedrock
 ENV CLAUDE_CODE_USE_BEDROCK=1
 ENV AWS_REGION=us-west-2
