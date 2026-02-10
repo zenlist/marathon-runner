@@ -21,7 +21,14 @@ RUN sudo apt update -y \
        protobuf-compiler \
        tinyproxy \
        openssh-client \
+       jq \
     && sudo rm -rf /var/lib/apt/lists/*
+
+# Install AWS CLI v2
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && unzip awscliv2.zip \
+    && sudo ./aws/install \
+    && rm -rf awscliv2.zip aws
 
 # Install GH CLI
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
