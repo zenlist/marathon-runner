@@ -70,3 +70,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - \
 # Configure Claude Code to use AWS Bedrock
 ENV CLAUDE_CODE_USE_BEDROCK=1
 ENV AWS_REGION=us-west-2
+
+# Run as the non-root runner user. This is already the base image default
+# (note the sudo on every RUN above); making it explicit satisfies the
+# Checkmarx KICS "Missing User Instruction" check (APPSEC-106883).
+USER runner
